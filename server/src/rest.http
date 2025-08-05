@@ -1,4 +1,4 @@
-### REGISTER USER
+### GET USER
 
 GET http://localhost:3001/api/fpl
 
