@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/fpl", require("./routes/getTableDt").router);
+app.use("/api/fpl", require("./routes/gameWeekDt").router);
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

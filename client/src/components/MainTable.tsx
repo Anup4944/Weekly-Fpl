@@ -1,4 +1,3 @@
-// src/components/TeamTable.tsx
 import fetchFplData from "@/actions/fetchData";
 import {
   Table,
@@ -19,8 +18,7 @@ export default function MainTable() {
     async function fetchData() {
       try {
         const response = await fetchFplData();
-        // console.log("Response from server", response);
-        setData(response);
+        setData(response.results.new_entries.results);
       } catch (error) {
         console.log("something went wrong", `${error}`);
       }
@@ -51,7 +49,7 @@ export default function MainTable() {
 
         <TableBody>
           {data?.length ? (
-            data.map((team, key) => (
+            data.map((team) => (
               <TableRow
                 key={team.entry_name}
                 className="hover:bg-muted/50 transition-colors"
