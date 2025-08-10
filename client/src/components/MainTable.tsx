@@ -22,9 +22,11 @@ export default function MainTable() {
       try {
         setIsLoading(true);
         const response = await fetchFplData();
-        setTotalManagers(response.results.new_entries.results.length);
-        const sortedManagers = response.results.new_entries.results.sort(
-          (a, b) => a.player_first_name.localeCompare(b.player_first_name)
+        const managers = response?.results?.new_entries?.results || [];
+
+        setTotalManagers(managers.length);
+        const sortedManagers = [...managers].sort((a, b) =>
+          a.player_first_name.localeCompare(b.player_first_name)
         );
         setData(sortedManagers);
       } catch (error) {
@@ -43,11 +45,11 @@ export default function MainTable() {
   return (
     <div>
       {isLoading ? (
-        <div className="flex items-center justify-center">
+        <div className="fixed inset-0 flex items-center justify-center  text-muted-foreground">
           Loading managers...
         </div>
       ) : error ? (
-        <div className="text-red-500 flex items-center justify-center">
+        <div className="fixed inset-0 flex items-center justify-center  text-muted-foreground">
           Error: {error}
         </div>
       ) : data ? (
@@ -63,6 +65,15 @@ export default function MainTable() {
                 </TableHead>
                 <TableHead className="w-[25%] font-semibold text-foreground text-right">
                   Earnings
+                </TableHead>
+                <TableHead className="w-[25%] font-semibold text-foreground text-right">
+                  Gameweek winner
+                </TableHead>
+                <TableHead className="w-[25%] font-semibold text-foreground text-right">
+                  Gameweek runner up
+                </TableHead>
+                <TableHead className="w-[25%] font-semibold text-foreground text-right">
+                  MOTH
                 </TableHead>
                 <TableHead className="w-[25%] font-semibold text-foreground text-right">
                   Joined
@@ -95,6 +106,15 @@ export default function MainTable() {
                   ) : (
                     <span className="text-muted-foreground">-</span>
                   )} */}
+                      <span className="text-muted-foreground">-</span>
+                    </TableCell>
+                    <TableCell className="text-right text-sm text-muted-foreground">
+                      <span className="text-muted-foreground">-</span>
+                    </TableCell>
+                    <TableCell className="text-right text-sm text-muted-foreground">
+                      <span className="text-muted-foreground">-</span>
+                    </TableCell>
+                    <TableCell className="text-right text-sm text-muted-foreground">
                       <span className="text-muted-foreground">-</span>
                     </TableCell>
                     <TableCell className="text-right text-sm text-muted-foreground">
