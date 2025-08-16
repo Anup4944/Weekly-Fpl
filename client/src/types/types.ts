@@ -6,15 +6,9 @@ export interface FPLApiResponse {
     new_entries: {
       has_next: boolean;
       page: number;
-      results: Array<{
-        entry: number;
-        entry_name: string;
-        joined_time: string;
-        player_first_name: string;
-        player_last_name: string;
-      }>;
+      results: Array<unknown>;
     };
-    last_updated_data: null | boolean; // Update with actual type if known
+    last_updated_data: null | string; // Update with actual type if known
     league: {
       id: number;
       name: string;
@@ -33,16 +27,32 @@ export interface FPLApiResponse {
     standings: {
       has_next: boolean;
       page: number;
-      results: Array<unknown>; // Replace with specific type if known
+      results: Array<{
+        id: number;
+        event_total: number;
+        player_name: string;
+        rank: number;
+        last_rank: number;
+        rank_sort: number;
+        total: number;
+        entry: number;
+        entry_name: string;
+        has_played: boolean;
+      }>; // Replace with specific type if known
     };
   };
 }
 
 export interface Manager {
+  id: number;
+  event_total: number;
+  player_name: string;
+  rank: number;
+  last_rank: number;
+  rank_sort: number;
+  total: number;
   entry: number;
   entry_name: string;
-  joined_time: string; // ISO 8601 format datetime string
-  player_first_name: string;
-  player_last_name: string;
+  has_played: boolean;
 }
 export type ManagerApiResponse = Manager[];

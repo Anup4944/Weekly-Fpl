@@ -11,6 +11,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/fpl", require("./routes/gameWeekDt").router);
+app.use("/api/fpl", require("./routes/fixtures").router);
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

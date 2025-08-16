@@ -1,4 +1,6 @@
-### GET USER
-
+### GAMEWEEK DATA
 GET http://localhost:3001/api/fpl
+
+### GET ALL FIXTURES
+GET http://localhost:3001/api/fpl/all/fixtures
 
