@@ -50,23 +50,23 @@ export default function MainTable() {
           No results found
         </div>
       ) : (
-        <div className="min-w-[500px] rounded-md border shadow-sm">
+        <div className="min-w-[400px] rounded-md border shadow-sm">
+          {/* Reduced from 500px */}
           <Table>
             <TableHeader className="sticky top-0 bg-background">
               <TableRow className="hover:bg-transparent">
-                <TableHead className="w-[160px] sm:w-[30%] font-semibold text-foreground">
+                <TableHead className="w-[120px] sm:w-[10%] font-semibold text-foreground px-2 ">
+                  {/* Reduced padding */}
                   Manager ({data.length})
                 </TableHead>
-                {/* Show Team Name only on desktop */}
-                <TableHead className="w-[160px] sm:w-[30%] font-semibold text-foreground hidden sm:table-cell">
+                <TableHead className="w-[100px] sm:w-[30%] font-semibold text-foreground hidden sm:table-cell px-2 sm:px-4">
                   Team Name
                 </TableHead>
-                {/* Show Total Won on all screens (with responsive width) */}
-                <TableHead className="w-[120px] sm:w-[20%] font-semibold text-foreground">
+                <TableHead className="w-[80px] sm:w-[10%] font-semibold text-foreground ">
+                  {/* Narrower column */}
                   Total Won
                 </TableHead>
-                {/* Hide GW and MOTM on mobile */}
-                <TableHead className="w-[120px] sm:w-[20%] font-semibold text-foreground hidden sm:table-cell">
+                <TableHead className="w-[100px] sm:w-[20%] font-semibold text-foreground hidden sm:table-cell px-2 sm:px-4">
                   GW + MOTM
                 </TableHead>
               </TableRow>
@@ -75,19 +75,18 @@ export default function MainTable() {
             <TableBody>
               {data.map((team) => (
                 <TableRow key={team.entry_name} className="hover:bg-muted/50">
-                  <TableCell className="font-medium py-4 w-[160px] sm:w-[30%]">
+                  <TableCell className="font-medium py-3 w-[120px] sm:w-[10%] px-2 ">
+                    {/* Reduced padding */}
                     {team.player_name}
                   </TableCell>
-                  {/* Hide Team Name on mobile */}
-                  <TableCell className="text-muted-foreground w-[160px] sm:w-[30%] hidden sm:table-cell">
+                  <TableCell className="text-muted-foreground w-[100px] sm:w-[30%] hidden sm:table-cell px-2 sm:px-4">
                     {team.entry_name}
                   </TableCell>
-                  {/* Always show Total Won (replace "-" with actual data if available) */}
-                  <TableCell className="text-muted-foreground w-[120px] sm:w-[20%]">
+                  <TableCell className="text-muted-foreground w-[80px] sm:w-[10%] px-2 ">
+                    {/* Narrower column */}
                     {team.total_won || "-"}
                   </TableCell>
-                  {/* Hide GW + MOTM on mobile */}
-                  <TableCell className="text-muted-foreground w-[120px] sm:w-[20%] hidden sm:table-cell">
+                  <TableCell className="text-muted-foreground w-[100px] sm:w-[20%] hidden sm:table-cell px-2 sm:px-4">
                     {team.gw_motm || "-"}
                   </TableCell>
                 </TableRow>
